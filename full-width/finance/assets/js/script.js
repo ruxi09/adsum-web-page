@@ -597,12 +597,11 @@
     function map() {
 
         var locations = [
-            ['Hotel royal international khulna ', 22.8103888, 89.5619609,1],
-            ['City inn khulna', 22.820884, 89.551216,2],
+            ['Adsum', 51.524992, -0.127945,1],
         ];
 
         var map = new google.maps.Map(document.getElementById('map'), {
-            center: new google.maps.LatLng( 22.8103888, 89.5619609),
+            center: new google.maps.LatLng(51.524992, -0.127945),
             zoom: 12,
             scrollwheel: false,
             mapTypeId: google.maps.MapTypeId.ROADMAP
