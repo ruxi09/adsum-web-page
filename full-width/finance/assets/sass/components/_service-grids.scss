@@ -270,9 +270,6 @@
 		color: $theme-secondary-color;
 	}
 
-	.hover-grid {
-		@include background-style("../images/services-s2-grid-bg.jpg", center center, cover, no-repeat, local);
-	}
 
 	/** hover **/
 	.grid:hover .hover-grid {
