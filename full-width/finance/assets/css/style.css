@@ -220,15 +220,18 @@ img {
 }
 
 .contact-validation-active #loader,
-.contact-validation-active #loader-2 {
+.contact-validation-active #loader-2,
+.contact-validation-active #loaderSubs {
   display: none;
   margin-top: 10px;
 }
 
 .contact-validation-active #success,
 .contact-validation-active #success-2,
+.contact-validation-active #successSubs,
 .contact-validation-active #error,
-.contact-validation-active #error-2 {
+.contact-validation-active #error-2,
+.contact-validation-active #errorSubs {
   width: 100%;
   color: #fff;
   padding: 5px 10px;
@@ -239,27 +242,32 @@ img {
 
 @media (max-width: 767px) {
   .contact-validation-active #success,
-  .contact-validation-active #success-2,
+  .contact-validation-active #success-2
+  .contact-validation-active #successSubs,
   .contact-validation-active #error,
-  .contact-validation-active #error-2 {
+  .contact-validation-active #error-2,
+  .contact-validation-active #errorSubs {
     font-size: 15px;
   }
 }
 
 .contact-validation-active #success,
-.contact-validation-active #success-2 {
+.contact-validation-active #success-2,
+.contact-validation-active #successSubs {
   background-color: #009a00;
   border-left: 5px solid green;
   margin-bottom: 5px;
 }
 
 .contact-validation-active #error,
-.contact-validation-active #error-2 {
+.contact-validation-active #error-2,
+.contact-validation-active #errorSubs {
   background-color: #ff1a1a;
   border-left: 5px solid red;
 }
 
-.contact-validation-active #loader {
+.contact-validation-active #loader,
+.contact-validation-active #loaderSubs {
   text-align: center;
   color: #fff;
   font-size: 8px;
@@ -6450,6 +6458,58 @@ img {
 }
 .stepper .disabled .round-tab::after {
   display: none;
+}
+
+
+
+
+
+.fixed-button {
+  background-color: #003885;
+  color: #FFFFFF;
+  border: none;
+  outline: none;
+  position: fixed;
+  bottom: 50px;
+  right: 13px;
+  height: 50px;
+  width: 50px;
+  margin-bottom: 20px;
+  border-radius: 30px;
+  box-shadow: 1px 3px 5px #888888;
+}
+
+@keyframes wobble {
+  16.65% {
+    -webkit-transform: translateY(8px);
+    -ms-transform: translateY(8px);
+    transform: translateY(8px);
+  }
+  33.3% {
+    -webkit-transform: translateY(-6px);
+    -ms-transform: translateY(-6px);
+    transform: translateY(-6px);
+  }
+  49.95% {
+    -webkit-transform: translateY(4px);
+    -ms-transform: translateY(4px);
+    transform: translateY(4px);
+  }
+  66.6% {
+    -webkit-transform: translateY(-2px);
+    -ms-transform: translateY(-2px);
+    transform: translateY(-2px);
+  }
+  83.25% {
+    -webkit-transform: translateY(1px);
+    -ms-transform: translateY(1px);
+    transform: translateY(1px);
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

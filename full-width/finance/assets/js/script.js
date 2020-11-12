@@ -30,7 +30,7 @@
             if (navbar.hasClass("slideInn")) {
                 navbar.removeClass("slideInn");
             }
-            return false;            
+            return false;
         })
     }
 
@@ -166,7 +166,7 @@
 
     /*------------------------------------------
         = ACTIVE POPUP IMAGE
-    -------------------------------------------*/  
+    -------------------------------------------*/
     if ($(".fancybox").length) {
         $(".fancybox").fancybox({
             openEffect  : "elastic",
@@ -178,14 +178,14 @@
 
     /*------------------------------------------
         = POPUP VIDEO
-    -------------------------------------------*/  
+    -------------------------------------------*/
     if ($(".video-btn").length) {
         $(".video-btn").on("click", function(){
             $.fancybox({
                 href: this.href,
                 type: $(this).data("type"),
                 'title'         : this.title,
-                helpers     : {  
+                helpers     : {
                     title : { type : 'inside' },
                     media : {}
                 },
@@ -195,13 +195,13 @@
                 }
             });
             return false
-        });    
+        });
     }
 
 
     /*------------------------------------------
         = ACTIVE GALLERY POPUP IMAGE
-    -------------------------------------------*/  
+    -------------------------------------------*/
     if ($(".popup-gallery").length) {
         $('.popup-gallery').magnificPopup({
             delegate: 'a',
@@ -220,7 +220,7 @@
                     return openerElement.is('img') ? openerElement : openerElement.find('img');
                 }
             }
-        });    
+        });
     }
 
 
@@ -256,7 +256,7 @@
         }
     }
 
-    sortingGallery(); 
+    sortingGallery();
 
 
     /*------------------------------------------
@@ -277,8 +277,8 @@
     }
 
     // masonryGridSetting();
-	
-	
+
+
     /*------------------------------------------
         = STICKY HEADER
     -------------------------------------------*/
@@ -299,7 +299,7 @@
         if ($(window).scrollTop() >= 300) {
             var orgElement = $(".original");
             var coordsOrgElement = orgElement.offset();
-            var leftOrgElement = coordsOrgElement.left;  
+            var leftOrgElement = coordsOrgElement.left;
             var widthOrgElement = orgElement.css("width");
 
             $stickyClass.addClass($toggleClass);
@@ -329,7 +329,7 @@
     if ($(".header-search-area").length) {
         var serachFormBox = $(".header-search-area .header-search-form");
         var openSeachBtn = $(".header-search-area .open-btn");
-        
+
         $(document.body).append(serachFormBox);
         serachFormBox.hide();
 
@@ -360,7 +360,7 @@
                     var percent = current_item.data('percent');
                     current_item.append('<span>' + percent + '%' + '</span>').css('width', percent + '%').addClass('appeared');
                 }
-                
+
             });
         };
     }
@@ -538,7 +538,7 @@
 
             $(document.body).on('appear', '#chart', function() {
                 var current_item = $(this);
-                
+
                 if (!current_item.hasClass('appeared')) {
                     current_item.addClass('appeared');
 
@@ -582,18 +582,18 @@
                             }
                         }
                     });
-                }                
+                }
             });
         }
     }
 
     caseStudyChart();
-    
+
 
 
     /*------------------------------------------
         = GOOGLE MAP
-    -------------------------------------------*/  
+    -------------------------------------------*/
     function map() {
 
         var locations = [
@@ -612,7 +612,7 @@
 
         var marker, i;
 
-        for (i = 0; i < locations.length; i++) {  
+        for (i = 0; i < locations.length; i++) {
                 marker = new google.maps.Marker({
                 position: new google.maps.LatLng(locations[i][1], locations[i][2]),
                 map: map,
@@ -627,12 +627,46 @@
             })(marker, i));
         }
 
-    }; 
+    };
 
 
     /*------------------------------------------
         = CONTACT FORM SUBMISSION
-    -------------------------------------------*/  
+    -------------------------------------------*/
+    if ($("#subscribe-form").length) {
+        $("#subscribe-form").validate( {
+            rules: {
+                subsEmail: "requred",
+                minlength: 2
+            },
+            submitHandler: function(form){
+                 $.ajax({
+                    type: "POST",
+                    url: "subscribe.php",
+                    data: $(form).serialize(),
+                    success: function () {
+                        $( "#loaderSubs").hide();
+                        $( "#successSubs").slideDown( "slow" );
+                        setTimeout(function() {
+                        $( "#successSubs").slideUp( "slow" );
+                        }, 3000);
+                        form.reset();
+                        console.log("succes");
+                    },
+                    error: function() {
+                        $( "#loaderSubs").hide();
+                        $( "#errorSubs").slideDown( "slow" );
+                        setTimeout(function() {
+                        $( "#errorSubs").slideUp( "slow" );
+                        }, 3000);
+                        console.log("error");
+                    }
+                });
+                return false; // required to block normal submit since you used ajax
+            }
+
+        })
+    }
     if ($("#contact-form").length) {
         $("#contact-form").validate({
             rules: {
@@ -667,6 +701,7 @@
                         $( "#success").slideUp( "slow" );
                         }, 3000);
                         form.reset();
+                        console.log("Success");
                     },
                     error: function() {
                         $( "#loader").hide();
@@ -674,6 +709,7 @@
                         setTimeout(function() {
                         $( "#error").slideUp( "slow" );
                         }, 3000);
+                        console.log("Error");
                     }
                 });
                 return false; // required to block normal submit since you used ajax
@@ -681,6 +717,7 @@
 
         });
     }
+
 
     // Contact page form
     if ($("#contact-form-s2").length) {
@@ -736,14 +773,14 @@
 
 
     /*==========================================================================
-        WHEN DOCUMENT LOADING 
+        WHEN DOCUMENT LOADING
     ==========================================================================*/
         $(window).on('load', function() {
 
             preloader();
 
             sliderBgSetting();
-			
+
             toggleMobileNavigation();
 
             smallNavFunctionality();
@@ -764,19 +801,19 @@
     $(window).on("scroll", function() {
 
 		if ($(".site-header").length) {
-            stickIt($(".sticky-header"), "sticky-on"); 
+            stickIt($(".sticky-header"), "sticky-on");
         }
 
         toggleBackToTopBtn();
-        
+
     });
 
-    
+
     /*==========================================================================
         WHEN WINDOW RESIZE
     ==========================================================================*/
     $(window).on("resize", function() {
-        
+
         toggleClassForSmallNav();
 
         clearTimeout($.data(this, 'resizeTimer'));
@@ -852,3 +889,10 @@
     });
 
 }(jQuery, this));
+
+function hello() {
+    if (Modernizr.mq('only screen and (max-width: 40em)')) {
+        $('.call-us').attr("href", 'tel:XXXXXX');
+      }
+      
+  }
